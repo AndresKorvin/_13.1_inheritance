@@ -28,18 +28,28 @@ class ManagerTest {
     }
 
     @Test
-    void searchBy1() {
+    void searchByOneBook() {
         Product[] actual = manager.searchBy("апитан");
         Product[] expected = {book2};
 
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
-    void searchBy2() {
+    void searchByTwoBooks() {
         manager.add(book3);
 
         Product[] actual = manager.searchBy("апитан");
         Product[] expected = {book2, book3};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchBySmartphone() {
+        manager.add(smartphone);
+
+        Product[] actual = manager.searchBy("Iphone");
+        Product[] expected = {smartphone};
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -51,7 +61,21 @@ class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-/*    @Test
-    void matches() {
-    }*/
+    @Test
+    void searchByAuthor() {
+        Product[] actual = manager.searchBy("Акунин");
+        Product[] expected = {book1};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchByManufacturer() {
+        manager.add(smartphone);
+
+        Product[] actual = manager.searchBy("Apple");
+        Product[] expected = {smartphone};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

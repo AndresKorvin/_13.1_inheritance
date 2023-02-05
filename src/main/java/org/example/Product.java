@@ -22,4 +22,13 @@ public class Product {
     public int getPrice() {
         return price;
     }
+
+    public boolean matches(String search) {
+        if (this.name.contains(search)) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
 }
